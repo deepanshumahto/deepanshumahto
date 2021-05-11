@@ -14,25 +14,27 @@ void fileIO(){
 void solve(){
     ll n ;
     cin >> n ;
-    ll arr[n] ;
-    for(ll i=0 ; i<n ; i++){
+    ll arr[n+1] ;
+    ll xorr[n+1],count0[n+1] ;
+    
+    count0[0]=0 ;
+    for(ll i=1 ; i<=n ; i++){
         cin >> arr[i] ;
+        if(i==1)
+            xorr[i]=arr[i] ;
+        xorr[i]=arr[i]^xorr[i-1] ;
+        if(arr[i]==0)
+            count0[i]=count0[i-1]+1 ;
+        else
+            count0[i]=count0[i-1] ;
     }
+    
     ll q ;
     cin >> q ;
     while(q--){
-        ll l,r,count=0,xorall ;
+        ll l,r ;
         cin >> l >> r ;
-        for(ll i=(l-1) ; i<r ; i++){
-            if(i==(l-1)){
-                xorall=arr[i] ;
-            }
-            else
-                xorall^=arr[i] ;
-            if(arr[i]==0)
-                count++ ;
-        }
-        cout << xorall << ' ' << count << endl ;
+        cout << (xorr[r]^xorr[l-1]) << ' ' << (count0[r]-count0[l-1]) << endl ;
     }
 }
 
