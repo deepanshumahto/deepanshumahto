@@ -9,6 +9,7 @@ using namespace std ;
 #define testcase(t) int t ; cin >> t ; while(t--)
 #define all(v) v.begin(),v.end()
 #define mod 1000000007
+#define print(x) cout << x << endl
 
 void fileIO(){
     freopen("input.txt", "r", stdin) ;
@@ -30,21 +31,17 @@ int power(int a,int b){
 }
 
 void solve(){
-    int n ;
-    cin >> n ;
-    int arr[n] ;
-    unordered_map<int,int> m ;
-    for(int i=0 ; i<n ; i++){
-        cin >> arr[i] ;
-        m[arr[i]]++ ;
+    int count=0 ;
+    testcase(n){
+        int w,h ;
+        cin >> w >> h ;
+        int l=max(w,h) ;
+        int b=min(w,h) ;
+        double ratio=(double)l/b ;
+        if(ratio>=1.6 && ratio<=1.7)
+            count++ ;
     }
-
-    for(int i=0 ; i<n ; i++){
-        
-        for(int j=i ; j<n ; j++){
-                
-        }
-    }
+    cout << count ;
 }
 
 int32_t main(){
